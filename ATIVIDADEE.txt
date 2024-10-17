@@ -1,0 +1,27 @@
+/*ATIVIDADE*/
+
+/*1- Selecione a quantidade total de medicamentos em estoque.*/	
+SELECT SUM(ESTOQUE) AS TOTAL_ESTOQUE
+FROM MEDICAMENTOS 
+
+/*2 - Selecione a média de idade dos tutores.
+Obs : Não quero ano fixo. Ex: 2024 e sim que pegue o ano atual do servidor.*/
+SELECT AVG(EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM t.data_nascimento)) AS media_idade
+FROM tutor t
+
+/*3 - Selecione o menor valor unitário entre os medicamentos.*/
+SELECT MIN(UNIDADE) 
+FROM MEDICAMENTOS m 
+
+/*4 - Selecione o maior peso entre os pacientes.*/
+SELECT MAX(PESO)
+FROM PACIENTE p 
+
+/*5 - Selecione o número total de tutores na base de dados.*/
+SELECT COUNT(*) 
+FROM tutor t 
+
+/*6 - Selecione o valor total em estoque de medicamentos para cada unidade.*/
+SELECT SUM(ESTOQUE * PRECO) 
+FROM medicamentos
+GROUP BY UNIDADE 
